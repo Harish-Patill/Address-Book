@@ -1,6 +1,7 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 #include <stdio.h>
+#include<string.h>
 
 // Structures for the Fields
 struct Contacts

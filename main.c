@@ -15,17 +15,15 @@ int main()
         printf("Enter the option : ");
         scanf("%d", &option);
 
-        switch (option) /* Based on choosed option */
-        {
-        case 1:
-        {
+        switch (option) /* Based on choosed option */{
+        case 1:{
             create_contact(&addressbook);
             break;
         }
 
-        case 2:
-        {
-            printf("Search Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4. Exit\nEnter the option : "); /* Providing menu */
+        case 2:{
+            printf("\n");
+            printf("Search Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : "); /* Providing menu */
             search_contacts(&addressbook);
             break;
         }
@@ -35,21 +33,25 @@ int main()
             edit_contact(&addressbook);
             break;
 
-        case 4:
-        {
+        case 4:{
             printf("Delete Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : "); /* Providing menu */
 
             delete_contact(&addressbook);
             break;
         }
-        case 5:
-        {
-            printf("List Contacts:");
+        case 5:{
+            printf("\n");
+            printf("------------------------------------------------------------------------------------------------------------------\n");
+            printf("Contacts List:\n");
             list_contacts(&addressbook);
             break;
         }
 
-        case 6:
+        case 6:{
+            printf("Saving Info\n");
+            return 0;
+        }
+        case 7:
             printf("Exit\n");
             return 0;
 
