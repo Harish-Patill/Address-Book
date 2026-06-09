@@ -1,9 +1,8 @@
 #ifndef CONTACT_H
 #define CONTACT_H
-#include <stdio.h>
+#include<stdio.h>
 #include<string.h>
 
-// Structures for the Fields
 struct Contacts
 {
     char Name[20];
@@ -11,24 +10,19 @@ struct Contacts
     char Mail_ID[20];
 };
 
-// Structures foe the Contact deatils
-struct AddressBook
-{
-    // Array of structures for the Fields sturucture
-    struct Contacts contact_details[100];
-    // To keep the track no of contact count
-    int contact_count;
-};
+struct Contacts contact_details[100];
+int contact_count=0;
+
 
 /* Function declarations */
 
-void create_contact(struct AddressBook *);
-void list_contacts(struct AddressBook *);
-void search_contacts(struct AddressBook *);
-void edit_contact(struct AddressBook *);
-void delete_contact(struct AddressBook *);
-void save_contacts(struct AddressBook *);
+void create_contact(struct Contacts *eptr, int size);
+void list_contacts(struct Contacts *eptr, int size);
+void search_contacts(struct Contacts *eptr, int size);
+void edit_contact(struct Contacts *eptr, int size);
+void delete_contact(struct Contacts *eptr, int size);
+void save_contacts(struct Contacts *eptr, int size);
 
 #endif
-// CONTACT_H
-// CONTACT_H
+CONTACT_H
+CONTACT_H
