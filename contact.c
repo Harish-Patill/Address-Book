@@ -1,19 +1,125 @@
 #include "contact.h"
+#include<ctype.h>
 
 struct Contacts contact_details[100];
 int  contact_count=0;
 
 // Function Definitions
+// void create_contact(struct Contacts *eptr, int size){
+
+//     printf("Enter Name: ");
+//     do{
+//         scanf(" %[^\n]", eptr[size].Name);
+//     }
+//     while(!isalpha(eptr[size].Name[0]));
+
+//     printf("Enter Mobile Num: ");
+//     scanf("%s", eptr[size].Mobile_number);
+
+//     printf("Enter Email-id: ");
+//     scanf("%s", eptr[size].Mail_ID);
+
+//     contact_count++;
+// }
+
+
+
+
 void create_contact(struct Contacts *eptr, int size){
+    int is_valid;
 
-    printf("Enter Name: ");
-    scanf("%s", eptr[size].Name);
+    // Name validation
+    do {
+        is_valid = 1;
+        printf("Enter Name: ");
+        scanf(" %[^\n]", eptr[size].Name);
 
-    printf("Enter Mobile Num: ");
-    scanf("%s", eptr[size].Mobile_number);
+        for(int i = 0; i < strlen(eptr[size].Name); i++){
+            if(!isalpha(eptr[size].Name[i])){
+                is_valid = 0;
+                break;
+            }
+        }
+        if(!is_valid) printf("Invalid name! Only letters allowed.\n");
 
-    printf("Enter Email-id: ");
-    scanf("%s", eptr[size].Mail_ID);
+    }while(!is_valid);
+
+    // Phone validation
+    do {
+        is_valid = 1;
+        printf("Enter Mobile Num: ");
+        scanf(" %[^\n]", eptr[size].Mobile_number);
+
+        if(strlen(eptr[size].Mobile_number) != 10){
+            is_valid = 0;
+        } 
+        
+        else{
+            
+            for(int i = 0; i < 10; i++){
+                if(!isdigit(eptr[size].Mobile_number[i])){
+                    is_valid = 0;
+                    break;
+                }
+            }
+        }
+        // Uniqueness check
+        if(is_valid){
+            for(int i = 0; i < size; i++){
+                if(strcmp(eptr[i].Mobile_number, eptr[size].Mobile_number) == 0){
+                    is_valid = 0;
+                    printf("Mobile number already exists!\n");
+                    break;
+                }
+            }
+        }
+        if(!is_valid && strlen(eptr[size].Mobile_number) != 10)
+            printf("Invalid! Must be 10 digits only.\n");
+
+    } while(!is_valid);
+
+    // Email validation
+    do {
+        is_valid = 1;
+        printf("Enter Email-id: ");
+        scanf(" %[^\n]", eptr[size].Mail_ID);
+
+        char *at = strchr(eptr[size].Mail_ID, '@');
+        char *dot = strrchr(eptr[size].Mail_ID, '.');
+
+        // Basic structural checks
+        if(!at || !dot || dot < at){
+            is_valid = 0;
+        } 
+        
+        else{
+            // Something before @
+            if(at == eptr[size].Mail_ID) is_valid = 0;
+            // At least one char between @ and .
+            if(dot - at < 2) is_valid = 0;
+            // Must end with .com
+            if(strcmp(dot, ".com") != 0) is_valid = 0;
+            // Lowercase only
+            for(int i = 0; eptr[size].Mail_ID[i] != '\0'; i++){
+                if(isupper(eptr[size].Mail_ID[i])){
+                    is_valid = 0;
+                    break;
+                }
+            }
+            // Uniqueness check
+            if(is_valid){
+                for(int i = 0; i < size; i++){
+                    if(strcmp(eptr[i].Mail_ID, eptr[size].Mail_ID) == 0){
+                        is_valid = 0;
+                        printf("Email already exists!\n");
+                        break;
+                    }
+                }
+            }
+        }
+        if(!is_valid) printf("Invalid email!\n");
+
+    } while(!is_valid);
 
     contact_count++;
 }
