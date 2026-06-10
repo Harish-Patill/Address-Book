@@ -152,6 +152,7 @@ void edit_contact(struct Contacts *eptr, int size, int edit_user_input){
     }
     case 3:{
         int value=0;
+        
         printf("Enter Email_ID: ");
         scanf("%s",search_email);
         for(int i=0;i<size;i++){
