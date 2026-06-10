@@ -10,19 +10,19 @@ struct Contacts
     char Mail_ID[20];
 };
 
-struct Contacts contact_details[100];
-int contact_count=0;
+extern struct Contacts contact_details[100];
+extern int  contact_count;
 
 
 /* Function declarations */
 
+
+
 void create_contact(struct Contacts *eptr, int size);
 void list_contacts(struct Contacts *eptr, int size);
-void search_contacts(struct Contacts *eptr, int size);
-void edit_contact(struct Contacts *eptr, int size);
-void delete_contact(struct Contacts *eptr, int size);
+void search_contacts(struct Contacts *eptr, int size,int user_input);
+void edit_contact(struct Contacts *eptr, int size, int edit_user_input);
+void delete_contact(struct Contacts *eptr, int size, int delete_input);
 void save_contacts(struct Contacts *eptr, int size);
 
 #endif
-CONTACT_H
-CONTACT_H

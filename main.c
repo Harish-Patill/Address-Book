@@ -6,6 +6,9 @@ int main()
     int option;
     int main_option = 1;
     int search_input=0;
+    int edit_input=0;
+    int user_input_delete_contact=0;
+
 
     while (main_option)
     {
@@ -16,7 +19,7 @@ int main()
 
         switch (option) /* Based on choosed option */{
         case 1:{
-            create_contact(&contact_details,contact_count);
+            create_contact(contact_details,contact_count);
             break;
         }
 
@@ -24,36 +27,38 @@ int main()
             printf("\n");
             printf("Search Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : "); /* Providing menu */
             scanf("%d",&search_input);
-            search_contacts(&contact_details,contact_count,search_input);
+            search_contacts(contact_details,contact_count,search_input);
             break;
         }
-        // case 3:
-        //     printf("Edit Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : "); /* Providing menu */
+        case 3:
+            printf("\n");
+            printf("Edit Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : "); /* Providing menu */
+            scanf("%d",&edit_input);
+            edit_contact(contact_details,contact_count,edit_input);
+            break;
 
-        //     edit_contact(&contact_details,contact_count);
-        //     break;
+        case 4:{
+            printf("Delete Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : "); /* Providing menu */
+            scanf("%d",&user_input_delete_contact);
+            delete_contact(contact_details,contact_count,user_input_delete_contact);
+            break;
+        }
+        case 5:{
+            printf("\n");
+            printf("------------------------------------------------------------------------------------------------------------------\n");
+            printf("Contacts List:\n");
+            list_contacts(contact_details,contact_count);
+            break;
+        }
 
-        // case 4:{
-        //     printf("Delete Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : "); /* Providing menu */
-
-        //     delete_contact(&contact_details,contact_count);
-        //     break;
-        // }
-        // case 5:{
-        //     printf("\n");
-        //     printf("------------------------------------------------------------------------------------------------------------------\n");
-        //     printf("Contacts List:\n");
-        //     list_contacts(&contact_details,contact_count);
-        //     break;
-        // }
-
-        // case 6:{
-        //     printf("Saving Info\n");
-        //     return 0;
-        // }
+        case 6:{
+            printf("Saving Info\n");
+            return 0;
+        }
         case 7:
             printf("Exit\n");
             main_option=0;
+            break;
 
         default:
             printf("Invalid option \n");
