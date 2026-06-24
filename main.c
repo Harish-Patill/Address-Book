@@ -7,7 +7,7 @@ int main(){
     int edit_input=0;
     int user_input_delete_contact=0;
 
-    load_contacts(contact_details, &contact_count);   // <-- ADD THIS
+    load_contacts(contact_details, &contact_count);  
 
     while (main_option)    {
         printf("\nAddress book menu\n");
@@ -50,11 +50,11 @@ int main(){
         }
 
         case 6:{
-            save_contacts(contact_details, &contact_count);  // <-- FIX THIS
+            save_contacts(contact_details, &contact_count);  
             break;
         }
         case 7:
-            save_contacts(contact_details, &contact_count);  // <-- auto-save on exit
+            save_contacts(contact_details, &contact_count);  
             printf("Exit\n");
             main_option=0;
             break;

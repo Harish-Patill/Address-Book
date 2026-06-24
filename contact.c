@@ -185,7 +185,6 @@ void search_contacts(struct Contacts *eptr, int size, int user_input){
     }
 }
 
-// Helper: resolves duplicate names by asking mobile/email, returns index or -1
 int resolve_duplicate(struct Contacts *eptr, int size, char *search_name){
     // Count how many contacts share this name
     int match_count = 0;
@@ -227,7 +226,6 @@ int resolve_duplicate(struct Contacts *eptr, int size, char *search_name){
     return -1; // not found
 }
 
-// Helper: updates all 3 fields of a contact at index i with full validation
 void update_fields(struct Contacts *eptr, int size, int i){
     int is_valid;
 
