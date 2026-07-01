@@ -1,67 +1,63 @@
-#include "contact.h"
+#include "project_header.h"
+
+struct Contacts contact_details[100];
+int contact_count=0;
+int max_size=100;
 
 int main(){
-    int option;
-    int main_option = 1;
-    int search_input=0;
-    int edit_input=0;
-    int user_input_delete_contact=0;
+    int flag=1;
+    int main_option=0;
 
-    load_contacts(contact_details, &contact_count);  
+    load_contacts(contact_details);
 
-    while (main_option)    {
-        printf("\nAddress book menu\n");
-        printf("1.Add contact\n2.search contact\n3.Edit contact\n4.Delete contact\n5.Display contact\n6.Save contact\n7.Exit\n");
-        printf("Enter the option : ");
-        scanf("%d", &option);
+    printf("\n\t\t:: Address Book ::");
+    while(flag){
+        printf("\n1. Add Contacts\n2. Search Contacts\n3. Edit Contacts\n4. Delete Contacts\n5. Display all Contacts\n6. Save and Exit\n7. Exit\n\nSelect any of the above options: ");
+        scanf("%d",&main_option);
 
-        switch (option){
-        case 1:{
-            create_contact(contact_details,contact_count);
-            break;
-        }
+        switch(main_option){
+            case 1:{
+                create_contacts(contact_details,max_size);
+                break;
+            }
 
-        case 2:{
-            printf("\n");
-            printf("Search Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : ");
-            scanf("%d",&search_input);
-            search_contacts(contact_details,contact_count,search_input);
-            break;
-        }
-        case 3:
-            printf("\n");
-            printf("Edit Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : ");
-            scanf("%d",&edit_input);
-            edit_contact(contact_details,contact_count,edit_input);
-            break;
+            case 2:{
+                search_contacts(contact_details);
+                break;
+            }
 
-        case 4:{
-            printf("Delete Contact menu : \n1.Name \n2.Mobile number\n3.Mail ID\n4.Exit\nEnter the option : ");
-            scanf("%d",&user_input_delete_contact);
-            delete_contact(contact_details,contact_count,user_input_delete_contact);
-            break;
-        }
-        case 5:{
-            printf("\n");
-            printf("------------------------------------------------------------------------------------------------------------------\n");
-            printf("Contacts List:\n");
-            list_contacts(contact_details,contact_count);
-            break;
-        }
+            case 3:{
+                edit_contacts(contact_details,contact_count);
+                break;
+            }
+            
+            case 4:{
+                delete_contact(contact_details,contact_count);
+                break;
+            }
 
-        case 6:{
-            save_contacts(contact_details, &contact_count);  
-            break;
-        }
-        case 7:
-            save_contacts(contact_details, &contact_count);  
-            printf("Exit\n");
-            main_option=0;
-            break;
+            case 5:{
+                list_all(contact_details);
+                break;
+            }
 
-        default:
-            printf("Invalid option \n");
-            break;
+            case 6:{
+                save_contacts(contact_details);
+                printf("\n\t\t :: Thank You ::\n");
+
+                flag=0;
+                break;
+            }
+
+            case 7:{
+                flag=0;
+                printf("\n\t\t :: Thank You ::\n");
+                break;
+            }
+
+            default:
+                printf("Invalid Input!");
+                break;
         }
     }
     return 0;
