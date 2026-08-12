@@ -32,14 +32,15 @@ ADDRESS-BOOK/
 
 ### Build
 
-Using the Makefile: ```bash
-                        make
-                    ```
+Using the Makefile: `make`
 
 Or manually:
 
 ```bash
 gcc main.c functions.c -o addressbook
+```
+```bash
+gcc *.c -o addressbook
 ```
 
 ### Run
