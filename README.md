@@ -1,6 +1,6 @@
 # Address Book
 
-A simple command line Address Book application written in C, built as a multi file project to practice modular programming, struct-based data modeling, file I/O, and CRUD operations.
+A simple Address Book application written in C, built as a multi file project to practice modular programming, struct-based data modeling, file I/O, and CRUD operations.
 
 ## Features
 
@@ -36,9 +36,6 @@ Using the Makefile: `make`
 
 Or manually:
 
-```bash
-gcc main.c functions.c -o addressbook
-```
 ```bash
 gcc *.c -o addressbook
 ```
