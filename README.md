@@ -1,4 +1,4 @@
-# Address Book (C)
+# Address Book
 
 A simple command line Address Book application written in C, built as a multi file project to practice modular programming, struct-based data modeling, file I/O, and CRUD operations.
 
@@ -32,11 +32,9 @@ ADDRESS-BOOK/
 
 ### Build
 
-Using the Makefile:
-
-```bash
-make
-```
+Using the Makefile: ```bash
+                        make
+                    ```
 
 Or manually:
 
